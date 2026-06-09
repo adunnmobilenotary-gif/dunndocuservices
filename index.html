@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dunn Document Services — Professional mobile notary, loan signing, apostille, and remote online notarization services throughout the OKC metro. NNA Certified, LSS Certified, $1M E&O Insurance.">
+  <title>Dunn Document Services | Mobile Notary & Signing Agent | OKC Metro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --green:       #2E5E3E;
+      --green-mid:   #4A7D5C;
+      --green-light: #EEF4F0;
+      --gold:        #B8A97A;
+      --ink:         #1C1C1A;
+      --graphite:    #5C5C58;
+      --linen:       #F7F6F3;
+      --border:      rgba(0,0,0,0.10);
+      --white:       #FFFFFF;
+      --radius:      6px;
+      --shadow:      0 2px 16px rgba(46,94,62,0.08);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Jost', sans-serif; background: var(--linen); color: var(--ink); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.2; }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+    h4 { font-size: 1.1rem; }
+    p { font-weight: 300; color: var(--graphite); }
+    .eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    .section-alt { background: var(--white); }
+    .section-dark { background: var(--green); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary { background: var(--green); color: var(--white); border: 1px solid var(--green); }
+    .btn-primary:hover { background: var(--green-mid); border-color: var(--green-mid); }
+    .btn-outline { background: transparent; color: var(--green); border: 1px solid var(--green); }
+    .btn-outline:hover { background: var(--green-light); }
+    .btn-white { background: var(--white); color: var(--green); border: 1px solid var(--white); }
+    .btn-white:hover { background: var(--green-light); border-color: var(--green-light); }
+    .btn-outline-white { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.5); }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+    .btn-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* ── CREDENTIAL PILLS ── */
+    .cred-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .cred-pill {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      background: var(--green-light);
+      color: var(--green);
+      border: 1px solid rgba(46,94,62,0.15);
+    }
+    .cred-pill-white {
+      background: rgba(255,255,255,0.15);
+      color: var(--white);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(247,246,243,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nav-monogram {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-monogram span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .nav-brand {
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .nav-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .nav-brand-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--graphite);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--graphite);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      font-size: 0.65rem !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.12em !important;
+      padding: 0.5rem 1.25rem;
+      background: var(--green);
+      color: var(--white) !important;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--green-mid) !important; color: var(--white) !important; }
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all 0.3s; }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--linen);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      z-index: 99;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink);
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    #home {
+      padding-top: 64px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--linen);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: -10%; right: -5%;
+      width: 55%;
+      height: 120%;
+      background: var(--green-light);
+      clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+    .hero-content h1 {
+      color: var(--ink);
+      margin: 1rem 0 1.25rem;
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    /* ── CRED BAR ── */
+    .cred-bar {
+      background: var(--green);
+      padding: 1rem 0;
+      overflow: hidden;
+    }
+    .cred-bar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .cred-bar-item {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      padding: 0.25rem 0;
+      white-space: nowrap;
+    }
+    .cred-bar-dot {
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      flex-shrink: 0;
+    }
+
+    /* ── SERVICE CARDS ── */
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+    .service-card:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow);
+      transform: translateY(-2px);
+    }
+    .service-card-icon {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .service-card-icon svg { width: 18px; height: 18px; stroke: var(--green); fill: none; stroke-width: 1.5; }
+    .service-card h4 {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+    .service-card p { font-size: 0.82rem; line-height: 1.65; }
+
+    /* ── DETAIL SECTIONS ── */
+    .detail-section { padding: 4rem 0; border-top: 1px solid var(--border); }
+    .detail-section:first-child { border-top: none; }
+
+    /* ── RATE TABLE ── */
+    .rate-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+    .rate-table tr { border-bottom: 1px solid var(--border); }
+    .rate-table tr:last-child { border-bottom: none; }
+    .rate-table td { padding: 0.75rem 0; font-size: 0.85rem; }
+    .rate-table td:first-child { font-weight: 400; color: var(--ink); }
+    .rate-table td:last-child { font-weight: 500; color: var(--green); text-align: right; }
+
+    /* ── FAQ ── */
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 1.1rem 0;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q svg { width: 16px; height: 16px; stroke: var(--green); flex-shrink: 0; transition: transform 0.3s; }
+    .faq-q.open svg { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.8;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+    .faq-a.open { max-height: 300px; padding-bottom: 1rem; }
+
+    /* ── ABOUT ── */
+    .about-split {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-photo {
+      aspect-ratio: 3/4;
+      background: var(--green-light);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .about-photo-placeholder {
+      text-align: center;
+      padding: 2rem;
+    }
+    .about-photo-mono {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--green);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .about-photo-mono span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .about-photo-placeholder p {
+      font-size: 0.72rem;
+      color: var(--graphite);
+      font-style: italic;
+    }
+    .cred-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+    .cred-table tr { border-bottom: 1px solid var(--border); }
+    .cred-table tr:last-child { border-bottom: none; }
+    .cred-table td { padding: 0.6rem 0; font-size: 0.82rem; vertical-align: top; }
+    .cred-table td:first-child { font-weight: 500; color: var(--green); width: 48%; padding-right: 1rem; }
+    .cred-table td:last-child { font-weight: 300; color: var(--graphite); }
+    .about-title-callout {
+      background: var(--green);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-top: 2.5rem;
+    }
+    .about-title-callout h3 { color: var(--white); margin-bottom: 0.75rem; }
+    .about-title-callout p { color: rgba(255,255,255,0.8); font-size: 0.85rem; }
+
+    /* ── STEP LIST ── */
+    .step-list { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 1.5rem; }
+    .step-item { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--green);
+      line-height: 1;
+      min-width: 28px;
+    }
+    .step-content h4 {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .step-content p { font-size: 0.82rem; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+    }
+    .contact-card-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--graphite);
+      margin-bottom: 0.3rem;
+    }
+    .contact-card-value {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--green);
+    }
+    .contact-card-value a { color: var(--green); }
+    .hours-table { width: 100%; border-collapse: collapse; margin-top: 1.25rem; }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 0.6rem 0; font-size: 0.83rem; }
+    .hours-table td:first-child { font-weight: 400; color: var(--ink); }
+    .hours-table td:last-child { font-weight: 300; color: var(--graphite); text-align: right; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-field label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--graphite);
+    }
+    .form-field input,
+    .form-field textarea {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--ink);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.7rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus { border-color: var(--green); }
+    .form-field textarea { resize: vertical; min-height: 100px; }
+
+    /* ── BOOK ── */
+    .calendly-inline-widget { min-width: 320px; height: 700px; }
+
+    /* ── RESOURCES ── */
+    .resource-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+    .resource-tab {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--graphite);
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .resource-tab.active {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+    .resource-panel { display: none; }
+    .resource-panel.active { display: block; }
+
+    .blog-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: all 0.2s;
+    }
+    .blog-card:hover { border-color: var(--green); box-shadow: var(--shadow); }
+    .blog-tag {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.4rem;
+    }
+    .blog-card h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .blog-card p { font-size: 0.82rem; }
+
+    .edu-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .edu-card h4 {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+      color: var(--ink);
+    }
+    .edu-card p, .edu-card li { font-size: 0.82rem; line-height: 1.8; }
+    .edu-card ul { padding-left: 1.25rem; }
+    .edu-card li { color: var(--graphite); font-weight: 300; margin-bottom: 0.2rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 0;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand-sub {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .footer-brand p { font-size: 0.82rem; line-height: 1.7; }
+    .footer-col h5 {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-bottom {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-header { max-width: 560px; margin-bottom: 3rem; }
+    .section-header h2 { margin: 0.5rem 0 1rem; }
+    .section-header p { font-size: 0.92rem; line-height: 1.75; }
+    .section-header.centered { max-width: 560px; margin: 0 auto 3rem; text-align: center; }
+
+    /* ── DIVIDER ── */
+    .hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+    .hr-green { border-top-color: rgba(46,94,62,0.2); }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      background: var(--green-light);
+      border: 1px solid rgba(46,94,62,0.15);
+      border-left: 3px solid var(--green);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.83rem;
+      line-height: 1.7;
+    }
+
+    /* ── SECTION NAV TABS ── */
+    .page-tabs {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+      scrollbar-width: none;
+    }
+    .page-tabs::-webkit-scrollbar { display: none; }
+    .page-tab {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--graphite);
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      white-space: nowrap;
+    }
+    .page-tab.active {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+    .page-panel { display: none; }
+    .page-panel.active { display: block; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr 1fr; }
+      .about-split { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo { display: none; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-bg { display: none; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .section { padding: 3.5rem 0; }
+      .cred-bar-dot { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <div class="nav-monogram"><span>DDS</span></div>
+      <div class="nav-brand">
+        <span class="nav-brand-name">Dunn Document Services</span>
+        <span class="nav-brand-sub">Mobile Notary &amp; Signing Agent</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#book" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#book" onclick="closeMobile()">Book an Appointment</a>
+  <a href="#resources" onclick="closeMobile()">Resources</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ═══ HOME ═══ -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content fade-up">
+      <p class="eyebrow">OKC Metro Mobile Notary</p>
+      <h1>Professional notary services, <em>when and where</em> you need them.</h1>
+      <p class="hero-sub">Dunn Document Services provides mobile notary, loan signing, apostille, and remote online notarization services across the OKC metro, backed by NNA certification, LSS certification, and $1M E&amp;O insurance.</p>
+      <div class="btn-row">
+        <a href="#book" class="btn btn-primary">Book a Signing</a>
+        <a href="#services" class="btn btn-outline">View Services</a>
+      </div>
+      <div class="cred-row">
+        <span class="cred-pill">NNA Certified</span>
+        <span class="cred-pill">LSS Certified</span>
+        <span class="cred-pill">$1M E&amp;O Insurance</span>
+        <span class="cred-pill">OK Commission #23008888</span>
+        <span class="cred-pill">Bonded</span>
+        <span class="cred-pill">RON Authorized</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CRED BAR ═══ -->
+<div class="cred-bar">
+  <div class="cred-bar-inner container">
+    <span class="cred-bar-item">NNA Certified</span>
+    <span class="cred-bar-dot"></span>
+    <span class="cred-bar-item">LSS Certified</span>
+    <span class="cred-bar-dot"></span>
+    <span class="cred-bar-item">$1M E&amp;O Insurance</span>
+    <span class="cred-bar-dot"></span>
+    <span class="cred-bar-item">Oklahoma Commission #23008888</span>
+    <span class="cred-bar-dot"></span>
+    <span class="cred-bar-item">Bonded</span>
+    <span class="cred-bar-dot"></span>
+    <span class="cred-bar-item">RON Authorized</span>
+    <span class="cred-bar-dot"></span>
+    <span class="cred-bar-item">OKC Metro</span>
+  </div>
+</div>
+
+<!-- ═══ SERVICES OVERVIEW ═══ -->
+<section id="services" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow">What we do</p>
+      <h2>Everything you need, handled right.</h2>
+      <p>From loan closings to estate documents to remote online notarizations, Dunn Document Services brings professionalism, precision, and flexibility to every appointment.</p>
+    </div>
+
+    <!-- SERVICE TABS -->
+    <div class="page-tabs">
+      <button class="page-tab active" onclick="showService('loan')">Loan Signings</button>
+      <button class="page-tab" onclick="showService('general')">General Notary</button>
+      <button class="page-tab" onclick="showService('ron')">Remote Online (RON)</button>
+      <button class="page-tab" onclick="showService('estate')">Estate Planning</button>
+    </div>
+
+    <!-- LOAN SIGNINGS -->
+    <div class="page-panel active" id="svc-loan">
+      <div class="grid-2" style="gap:3rem; align-items:start;">
+        <div>
+          <p class="eyebrow">Loan Signings</p>
+          <h2 style="margin:0.5rem 0 1rem;">Loan signings done right, every time.</h2>
+          <p style="font-size:0.92rem; line-height:1.75;">Every signing is approached with preparation and professionalism. Documents are reviewed in advance, appointments start on time, and scan-backs are returned promptly. Dunn Document Services works directly with title companies, escrow officers, and closing coordinators to make sure every closing goes smoothly, the first time.</p>
+          <div class="cred-row" style="margin-top:1.25rem;">
+            <span class="cred-pill">NNA Certified</span>
+            <span class="cred-pill">LSS Certified</span>
+            <span class="cred-pill">Scan-backs included</span>
+          </div>
+          <div class="btn-row">
+            <a href="#book" class="btn btn-primary">Book a Signing</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+        <div>
+          <div class="grid-2" style="gap:1rem;">
+            <div class="service-card">
+              <h4>Purchase, Buyer</h4>
+              <p>Full buyer-side signing packages. Thorough, patient, and on time.</p>
+            </div>
+            <div class="service-card">
+              <h4>Purchase, Seller</h4>
+              <p>Seller packages handled efficiently with attention to every signature line.</p>
+            </div>
+            <div class="service-card">
+              <h4>Refinance</h4>
+              <p>Standard and cash-out refinance packages, mobile throughout the metro.</p>
+            </div>
+            <div class="service-card">
+              <h4>HELOC</h4>
+              <p>Home equity line signings handled with the same care as a full closing.</p>
+            </div>
+            <div class="service-card">
+              <h4>Reverse Mortgage</h4>
+              <p>Closing and application signings. Patient, thorough, no rushing borrowers.</p>
+            </div>
+            <div class="service-card">
+              <h4>Loan Modification</h4>
+              <p>Modification packages completed accurately and returned promptly.</p>
+            </div>
+          </div>
+          <hr class="hr hr-green">
+          <p class="eyebrow" style="margin-bottom:0.75rem;">Fee Schedule</p>
+          <table class="rate-table">
+            <tr><td>Refinance</td><td>$150</td></tr>
+            <tr><td>Purchase, Buyer</td><td>$185</td></tr>
+            <tr><td>Purchase, Seller</td><td>$125</td></tr>
+            <tr><td>HELOC</td><td>$150</td></tr>
+            <tr><td>Reverse Mortgage Closing</td><td>$200</td></tr>
+            <tr><td>Reverse Mortgage Application</td><td>$150</td></tr>
+            <tr><td>Loan Modification</td><td>$100</td></tr>
+            <tr><td>After-hours</td><td>+$35</td></tr>
+            <tr><td>Rural beyond 30 mi</td><td>+$0.70/mi</td></tr>
+          </table>
+          <p style="font-size:0.78rem; margin-top:0.75rem; font-style:italic;">Scan-backs always included for direct title clients. RON at same rate as in-person.</p>
+        </div>
+      </div>
+      <div class="callout" style="margin-top:2rem;">
+        <strong style="font-size:0.83rem; font-weight:500; color:var(--green);">For title companies and escrow officers:</strong>
+        <span style="font-size:0.83rem; color:var(--graphite);"> Ready to add Dunn Document Services to your signing list? Reach out directly by phone, text, or email. Fee schedule available on request.</span>
+      </div>
+    </div>
+
+    <!-- GENERAL NOTARY -->
+    <div class="page-panel" id="svc-general">
+      <div class="grid-2" style="gap:3rem; align-items:start;">
+        <div>
+          <p class="eyebrow">General Notary</p>
+          <h2 style="margin:0.5rem 0 1rem;">A notary who comes to you, wherever you need.</h2>
+          <p style="font-size:0.92rem; line-height:1.75;">Not every notarization is a loan closing, but every one matters. Dunn Document Services brings the same preparation and care to general notary work as to any signing appointment. Documents are handled with discretion, signers are guided through the process clearly, and every notarization is completed in full compliance with Oklahoma law.</p>
+          <div class="btn-row">
+            <a href="#book" class="btn btn-primary">Book an Appointment</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:0.75rem;">Documents we notarize</p>
+          <div class="grid-2" style="gap:1rem;">
+            <div class="service-card">
+              <h4>Powers of Attorney</h4>
+              <p>General, durable, financial, and healthcare POAs. Mobile to home, hospital, or care facility.</p>
+            </div>
+            <div class="service-card">
+              <h4>Wills and Trusts</h4>
+              <p>Witness and notarization services for estate planning documents prepared by your attorney.</p>
+            </div>
+            <div class="service-card">
+              <h4>Affidavits</h4>
+              <p>Sworn statements, affidavits of heirship, identity affidavits, and more.</p>
+            </div>
+            <div class="service-card">
+              <h4>Consent Forms</h4>
+              <p>Minor travel consent, medical authorization, and other personal consent documents.</p>
+            </div>
+            <div class="service-card">
+              <h4>Business Documents</h4>
+              <p>Contracts, agreements, certifications, and other documents requiring notarization.</p>
+            </div>
+            <div class="service-card">
+              <h4>Other Documents</h4>
+              <p>If it needs a notary stamp in Oklahoma, reach out and we'll confirm we can help.</p>
+            </div>
+          </div>
+          <div class="callout">We come to you, including home, hospital, nursing home, and care facility appointments throughout the OKC metro. Same-day appointments often available.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RON -->
+    <div class="page-panel" id="svc-ron">
+      <div class="grid-2" style="gap:3rem; align-items:start;">
+        <div>
+          <p class="eyebrow">Remote Online Notarization</p>
+          <h2 style="margin:0.5rem 0 1rem;">Notarization from anywhere, fully legal and compliant.</h2>
+          <p style="font-size:0.92rem; line-height:1.75;">Remote online notarization (RON) lets you complete your signing from home, from the office, or from anywhere in the world, over a secure live video call with a commissioned Oklahoma notary. No travel required. Same rates as in-person.</p>
+          <p style="font-size:0.92rem; line-height:1.75; margin-top:0.75rem;">Oklahoma authorized RON in 2019. Dunn Document Services is fully commissioned and compliant to perform RON for Oklahoma signers, as well as for US citizens and residents located overseas who need documents notarized under Oklahoma authority.</p>
+          <div class="cred-row" style="margin-top:1.25rem;">
+            <span class="cred-pill">RON Authorized</span>
+            <span class="cred-pill">Same rate as in-person</span>
+          </div>
+          <div class="btn-row">
+            <a href="#book" class="btn btn-primary">Book a RON Appointment</a>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:1rem;">How it works</p>
+          <div class="step-list">
+            <div class="step-item">
+              <span class="step-num">1</span>
+              <div class="step-content">
+                <h4>Book your appointment online</h4>
+                <p>Choose RON when scheduling. You'll receive a confirmation with everything you need to prepare.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-num">2</span>
+              <div class="step-content">
+                <h4>Connect via secure video</h4>
+                <p>Join from any device with a camera and internet connection. Your identity is verified and your document is reviewed.</p>
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-num">3</span>
+              <div class="step-content">
+                <h4>Sign, seal, done</h4>
+                <p>Documents are signed electronically and sealed with a digital notary certificate. You receive your completed document promptly after the session.</p>
+              </div>
+            </div>
+          </div>
+          <hr class="hr hr-green">
+          <p class="eyebrow" style="margin-bottom:0.75rem;">What to have ready</p>
+          <div class="grid-2" style="gap:0.75rem;">
+            <div class="service-card" style="padding:1rem;">
+              <h4>A device with a camera</h4>
+              <p>Laptop, tablet, or smartphone with working camera and microphone.</p>
+            </div>
+            <div class="service-card" style="padding:1rem;">
+              <h4>Reliable internet</h4>
+              <p>Standard home wifi works. No special software needed.</p>
+            </div>
+            <div class="service-card" style="padding:1rem;">
+              <h4>Government-issued ID</h4>
+              <p>Driver's license or passport to hold up to the camera for verification.</p>
+            </div>
+            <div class="service-card" style="padding:1rem;">
+              <h4>Your document</h4>
+              <p>Unsigned. Documents are typically shared digitally during the session.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTATE PLANNING -->
+    <div class="page-panel" id="svc-estate">
+      <div class="grid-2" style="gap:3rem; align-items:start;">
+        <div>
+          <p class="eyebrow">Estate Planning</p>
+          <h2 style="margin:0.5rem 0 1rem;">Estate documents handled with care and discretion.</h2>
+          <p style="font-size:0.92rem; line-height:1.75;">Estate planning documents are among the most important a person will ever sign. Dunn Document Services approaches every estate appointment with patience, attention to detail, and genuine respect for the moment. There is no rushing, no pressure, and no confusion about what is being signed. Just a professional who shows up prepared and makes the process as straightforward as possible.</p>
+          <div class="callout">Dunn Document Services provides notarization and witness services only. We do not draft, review, or advise on legal documents. Once your documents are prepared by your attorney, we are ready to handle the signing appointment.</div>
+          <div class="btn-row">
+            <a href="#book" class="btn btn-primary">Book an Appointment</a>
+            <a href="#contact" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:0.75rem;">Documents we notarize</p>
+          <div class="grid-2" style="gap:1rem;">
+            <div class="service-card">
+              <h4>Wills</h4>
+              <p>Witness and notarization for last wills and testaments prepared by your attorney.</p>
+            </div>
+            <div class="service-card">
+              <h4>Trusts</h4>
+              <p>Revocable and irrevocable trust documents, including amendments.</p>
+            </div>
+            <div class="service-card">
+              <h4>Durable POA</h4>
+              <p>Financial and legal decision-making authority documents.</p>
+            </div>
+            <div class="service-card">
+              <h4>Healthcare POA</h4>
+              <p>Medical decision-making authority and advance directive documents.</p>
+            </div>
+            <div class="service-card">
+              <h4>Living Wills</h4>
+              <p>Advance healthcare directives and end-of-life instruction documents.</p>
+            </div>
+            <div class="service-card">
+              <h4>Affidavits of Heirship</h4>
+              <p>Sworn statements establishing inheritance relationships outside of probate.</p>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:1rem;">We regularly travel to hospitals, skilled nursing facilities, assisted living communities, and memory care facilities. Same-day appointments often available for urgent situations. Call or text 918.636.6968 directly.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-photo">
+        <div class="about-photo-placeholder">
+          <div class="about-photo-mono"><span>DDS</span></div>
+          <p>Professional headshot coming soon</p>
+        </div>
+      </div>
+      <div class="fade-up">
+        <p class="eyebrow">About</p>
+        <h2 style="margin:0.5rem 0 1.25rem;">Prepared, professional, and glad to be here.</h2>
+        <p style="font-size:0.92rem; line-height:1.8; margin-bottom:1rem;">Angelina Dunn is the notary behind Dunn Document Services. She started the business because she believed there was room in the OKC market for a signing agent who takes the work seriously, not just technically, but in the way she shows up to every appointment: on time, organized, patient with signers, and easy to work with for the title companies and attorneys coordinating the closing.</p>
+        <p style="font-size:0.92rem; line-height:1.8; margin-bottom:1rem;">She holds NNA certification, LSS certification, and carries $1M errors and omissions insurance, because the people she works with deserve that level of professional commitment. Whether it's a first-time homebuyer, a family navigating estate documents, or an escrow officer who needs a reliable agent on speed dial, Angelina brings the same care and precision every time.</p>
+        <p style="font-size:0.92rem; line-height:1.8; margin-bottom:1.5rem;">Dunn Document Services serves the full OKC metro, including Edmond, Norman, Yukon, Mustang, Moore, Midwest City, and surrounding communities, with mobile appointments and remote online notarization available for clients who cannot or prefer not to travel.</p>
+
+        <p class="eyebrow" style="margin-bottom:0.75rem;">Credentials and commissions</p>
+        <table class="cred-table">
+          <tr><td>Oklahoma Notary Commission</td><td>#23008888</td></tr>
+          <tr><td>NNA Member</td><td>#161636876</td></tr>
+          <tr><td>NNA Certified Notary Signing Agent</td><td>Active</td></tr>
+          <tr><td>LSS Certified</td><td>Active</td></tr>
+          <tr><td>Errors &amp; Omissions Insurance</td><td>$1,000,000</td></tr>
+          <tr><td>Bonded</td><td>Active</td></tr>
+          <tr><td>RON Authorized</td><td>Oklahoma</td></tr>
+          <tr><td>Background Checked</td><td>NNA annual screening</td></tr>
+        </table>
+
+        <div class="about-title-callout">
+          <h3>Working with title companies.</h3>
+          <p style="margin-top:0.5rem;">Dunn Document Services works directly with escrow officers and closing coordinators throughout the OKC metro. Scan-backs are always included. Confirmation is prompt. If something comes up at a signing, you hear about it immediately. Reach out directly by phone, text, or email to discuss direct placement.</p>
+          <div class="btn-row">
+            <a href="#contact" class="btn btn-outline-white">Get in Touch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOOK ═══ -->
+<section id="book" class="section section-alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow">Scheduling</p>
+      <h2>Schedule your appointment.</h2>
+      <p>Choose your service type and pick a time that works for you. Confirmations are sent immediately. Available Sunday through Friday, days and evenings. For urgent or same-day requests, call or text <a href="tel:9186366968" style="color:var(--green);">918.636.6968</a> directly.</p>
+    </div>
+    <div class="step-list" style="max-width:480px; margin-bottom:2.5rem;">
+      <div class="step-item">
+        <span class="step-num">1</span>
+        <div class="step-content">
+          <h4>Choose your service</h4>
+          <p>Select the appointment type: loan signing, general notary, estate planning, or RON.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">2</span>
+        <div class="step-content">
+          <h4>Pick a date and time</h4>
+          <p>Available times shown in real time. Same-day and next-day slots often available.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <div class="step-content">
+          <h4>Confirm your details</h4>
+          <p>Enter your name, contact info, and signing location. You'll receive confirmation immediately.</p>
+        </div>
+      </div>
+    </div>
+    <!-- CALENDLY EMBED -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/adunn-mobilenotary?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=2E5E3E&timezone=America%2FChicago"></div>
+  </div>
+</section>
+
+<!-- ═══ RESOURCES ═══ -->
+<section id="resources" class="section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="eyebrow">Resources</p>
+      <h2>Resources for signers and title professionals.</h2>
+      <p>Practical information about notary services, loan signings, and document preparation, written for clients and title company professionals in the OKC area.</p>
+    </div>
+
+    <div class="resource-tabs">
+      <button class="resource-tab active" onclick="showResource('faqs')">FAQs</button>
+      <button class="resource-tab" onclick="showResource('blog')">Blog</button>
+      <button class="resource-tab" onclick="showResource('education')">Client Education</button>
+    </div>
+
+    <!-- FAQs -->
+    <div class="resource-panel active" id="res-faqs">
+      <div class="grid-2" style="gap:3rem; align-items:start;">
+        <div>
+          <p class="eyebrow" style="margin-bottom:1rem;">General notary questions</p>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What does a notary public actually do? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">A notary public is a state-commissioned official authorized to verify the identity of signers, witness signatures, and apply an official seal to documents. Notarization confirms that the person signing is who they say they are and that they signed willingly. It does not mean the notary has reviewed the document for legal accuracy.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What do I need to bring? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">A valid, current, government-issued photo ID. Make sure your document is unsigned before the appointment. Most notarizations require you to sign in front of the notary, so signing in advance may invalidate the notarization.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you notarize any document? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Dunn Document Services can notarize most documents that require an Oklahoma notarization. Notaries cannot notarize a document in which they have a personal financial interest. If you have a question about a specific document, reach out before booking.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How far in advance do I need to book? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Same-day and next-day appointments are often available. Use the booking page to see current availability. For urgent requests, call or text 918.636.6968 directly.</div></div>
+
+          <p class="eyebrow" style="margin: 2rem 0 1rem;">Loan signings</p>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is a loan signing agent? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">A loan signing agent is a notary public who specializes in mortgage and real estate closing documents. Dunn Document Services holds NNA certification and LSS certification specifically for this work.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Are scan-backs included? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. Scan-backs are always included for direct title company clients at no additional charge.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How do I add Dunn Document Services to our signing list? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Reach out directly by phone, text, or email. A fee schedule is available on request. Dunn Document Services welcomes direct placement inquiries from escrow officers and closing coordinators throughout the OKC metro.</div></div>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom:1rem;">Remote online notarization</p>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is remote online notarization legal? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. Oklahoma authorized RON in 2019. A RON notarization carries the same legal weight as an in-person notarization and is accepted by most lenders, title companies, courts, and government agencies.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What technology do I need for RON? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">A device with a working camera and microphone, a reliable internet connection, and a valid government-issued photo ID. No special software needs to be installed. Instructions are sent with your booking confirmation.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">I'm a US citizen living overseas. Can I use this service? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. RON services through Dunn Document Services are available to US citizens and residents located overseas. If you're abroad and need a document notarized under Oklahoma authority, reach out at 918.636.6968 or use the contact form to discuss your situation before booking.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is the RON rate the same as in-person? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. Remote online notarization is offered at the same rate as an in-person appointment. There is no additional fee for the convenience of a remote session.</div></div>
+
+          <p class="eyebrow" style="margin: 2rem 0 1rem;">Estate planning</p>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you come to a hospital or care facility? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. Dunn Document Services regularly travels to hospitals, skilled nursing facilities, assisted living communities, and memory care facilities throughout the OKC metro. Please note the location when booking. For urgent situations, call or text 918.636.6968 directly.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need an attorney before booking? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">Yes. Dunn Document Services provides notarization and witness services for documents that have already been prepared, typically by an estate planning attorney. Work with your attorney first, then book your signing appointment once everything is ready to sign.</div></div>
+          <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you serve as a witness as well as a notary? <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a">In many cases, yes. Let us know what your document requires when you book and we will confirm what can be accommodated.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOG -->
+    <div class="resource-panel" id="res-blog">
+      <div class="grid-2" style="gap:1.5rem;">
+        <div class="blog-card">
+          <p class="blog-tag">General Notary</p>
+          <h4>What to Expect at a Mobile Notary Appointment</h4>
+          <p>What ID to bring, why you should not sign the document in advance, what the notary is and is not responsible for, and how long a typical appointment takes.</p>
+          <div class="btn-row"><a href="#contact" class="btn btn-outline" style="font-size:0.62rem; padding:0.5rem 1rem;">Coming Soon</a></div>
+        </div>
+        <div class="blog-card">
+          <p class="blog-tag">Loan Signings</p>
+          <h4>How to Prepare for Your Loan Signing Appointment</h4>
+          <p>What to bring, what to expect from the signing agent, how long a closing typically takes, and what to do if something looks wrong in the documents.</p>
+          <div class="btn-row"><a href="#contact" class="btn btn-outline" style="font-size:0.62rem; padding:0.5rem 1rem;">Coming Soon</a></div>
+        </div>
+        <div class="blog-card">
+          <p class="blog-tag">Remote Online Notarization</p>
+          <h4>Remote Online Notarization in Oklahoma: What It Is and When to Use It</h4>
+          <p>What RON is, how Oklahoma law governs it, what documents it is accepted for, and when it is the most practical option, including for clients traveling or overseas.</p>
+          <div class="btn-row"><a href="#contact" class="btn btn-outline" style="font-size:0.62rem; padding:0.5rem 1rem;">Coming Soon</a></div>
+        </div>
+        <div class="blog-card">
+          <p class="blog-tag">Estate Planning</p>
+          <h4>Getting Estate Documents Notarized in OKC: A Simple Guide</h4>
+          <p>Common estate planning documents that require notarization, how to coordinate with your attorney, and what to do if a family member cannot travel to a notary.</p>
+          <div class="btn-row"><a href="#contact" class="btn btn-outline" style="font-size:0.62rem; padding:0.5rem 1rem;">Coming Soon</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLIENT EDUCATION -->
+    <div class="resource-panel" id="res-education">
+      <div class="grid-2" style="gap:1.25rem;">
+        <div class="edu-card">
+          <h4>What to Bring to Any Notary Appointment</h4>
+          <ul>
+            <li>A valid, current, government-issued photo ID (driver's license, state ID, or passport)</li>
+            <li>Your document, unsigned</li>
+            <li>Any co-signers who need to be present, each with their own valid ID</li>
+            <li>Payment if required for your appointment type</li>
+          </ul>
+        </div>
+        <div class="edu-card">
+          <h4>How to Prepare for a Loan Signing</h4>
+          <ul>
+            <li>Have your government-issued photo ID ready</li>
+            <li>Do not sign any documents before the signing agent arrives</li>
+            <li>Set aside 45 to 90 minutes depending on the loan type</li>
+            <li>Review your closing disclosure in advance so the numbers are not a surprise</li>
+            <li>If something looks wrong in the documents, say so before signing</li>
+          </ul>
+        </div>
+        <div class="edu-card">
+          <h4>What a Notary Can and Cannot Do</h4>
+          <p>A notary can verify your identity, witness your signature, and apply an official seal to your document. A notary cannot give legal advice, review your document for errors, tell you whether you should sign, or draft legal documents. If you have questions about the content of a document, consult an attorney before your appointment.</p>
+        </div>
+        <div class="edu-card">
+          <h4>How to Prepare for a RON Appointment</h4>
+          <ul>
+            <li>Test your camera and microphone before the appointment time</li>
+            <li>Have your government-issued photo ID within reach to hold up to the camera</li>
+            <li>Be in a quiet, well-lit location</li>
+            <li>Have your document ready but unsigned</li>
+            <li>Check your email for the session link sent with your booking confirmation</li>
+          </ul>
+        </div>
+        <div class="edu-card" style="grid-column: span 2;">
+          <h4>Signing at a Hospital or Care Facility: What to Know</h4>
+          <p>Mobile notary appointments at hospitals, nursing homes, and assisted living facilities are available throughout the OKC metro. When booking, note the facility name, address, and room or unit number if known. If the signer requires special accommodations or has limited capacity to communicate, let us know in advance so the appointment can be handled appropriately. A valid ID is still required.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="section section-dark">
+  <div class="container">
+    <div class="section-header fade-up" style="max-width:100%;">
+      <p class="eyebrow" style="color:rgba(255,255,255,0.5);">Get in touch</p>
+      <h2 style="color:var(--white);">Let's connect.</h2>
+      <p style="color:rgba(255,255,255,0.7);">Questions about a service, a specific document, or scheduling? Reach out by phone, text, or email. Dunn Document Services responds promptly, typically within a few hours during business days.</p>
+    </div>
+    <div class="grid-2" style="gap:3rem; align-items:start;">
+      <div>
+        <div class="contact-grid" style="grid-template-columns:1fr 1fr; gap:1rem; margin-top:0;">
+          <div class="contact-card" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15);">
+            <p class="contact-card-label" style="color:rgba(255,255,255,0.45);">Phone and text</p>
+            <p class="contact-card-value"><a href="tel:9186366968" style="color:rgba(255,255,255,0.9);">918.636.6968</a></p>
+          </div>
+          <div class="contact-card" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15);">
+            <p class="contact-card-label" style="color:rgba(255,255,255,0.45);">Email</p>
+            <p class="contact-card-value" style="font-size:0.78rem;"><a href="mailto:adunn.mobilenotary@gmail.com" style="color:rgba(255,255,255,0.9);">adunn.mobilenotary@gmail.com</a></p>
+          </div>
+          <div class="contact-card" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); grid-column:span 2;">
+            <p class="contact-card-label" style="color:rgba(255,255,255,0.45);">Service area</p>
+            <p class="contact-card-value" style="color:rgba(255,255,255,0.9); font-size:0.83rem;">OKC Metro, Edmond, Norman, Yukon, Mustang, Moore, Midwest City, and surrounding areas</p>
+          </div>
+        </div>
+        <hr class="hr" style="border-color:rgba(255,255,255,0.1); margin:1.5rem 0;">
+        <p class="eyebrow" style="color:rgba(255,255,255,0.4); margin-bottom:0.75rem;">Availability</p>
+        <table class="hours-table" style="color:rgba(255,255,255,0.85);">
+          <tr><td style="color:rgba(255,255,255,0.85);">Sunday</td><td style="text-align:right; color:rgba(255,255,255,0.85);">Available</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.85);">Monday</td><td style="text-align:right; color:rgba(255,255,255,0.85);">Available</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.85);">Tuesday</td><td style="text-align:right; color:rgba(255,255,255,0.85);">Available</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.85);">Wednesday</td><td style="text-align:right; color:rgba(255,255,255,0.85);">Available</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.85);">Thursday</td><td style="text-align:right; color:rgba(255,255,255,0.85);">Available</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.85);">Friday</td><td style="text-align:right; color:rgba(255,255,255,0.85);">Available</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.35);">Saturday</td><td style="text-align:right; color:rgba(255,255,255,0.35);">Not available</td></tr>
+        </table>
+        <div class="callout" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.1); border-left-color:var(--gold); margin-top:1.5rem;">
+          <span style="font-size:0.83rem; color:rgba(255,255,255,0.7);">Title companies and escrow officers are welcome to reach out directly by phone or email to discuss direct placement. A fee schedule is available on request.</span>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="handleForm(event)">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label>Email or Phone</label>
+            <input type="text" placeholder="How should we reach you?" required>
+          </div>
+          <div class="form-field">
+            <label>How can we help?</label>
+            <textarea placeholder="Tell us about your document or signing needs..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-white" style="align-self:flex-start;">Send Message</button>
+          <p id="form-success" style="display:none; font-size:0.82rem; color:rgba(255,255,255,0.7); margin-top:0.5rem;">Message sent. We'll be in touch shortly.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div style="display:flex; align-items:center; gap:0.75rem; margin-bottom:0.75rem;">
+          <div class="nav-monogram"><span>DDS</span></div>
+          <div>
+            <p class="footer-brand-name">Dunn Document Services</p>
+            <p class="footer-brand-sub">Mobile Notary &amp; Signing Agent</p>
+          </div>
+        </div>
+        <p>NNA-certified, LSS-certified notary public serving the OKC metro with mobile notary, loan signing, apostille, and remote online notarization services.</p>
+        <div class="cred-row" style="margin-top:1rem;">
+          <span class="cred-pill cred-pill-white">NNA Certified</span>
+          <span class="cred-pill cred-pill-white">LSS Certified</span>
+          <span class="cred-pill cred-pill-white">$1M E&amp;O</span>
+          <span class="cred-pill cred-pill-white">RON Authorized</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services" onclick="showService('loan')">Loan Signings</a></li>
+          <li><a href="#services" onclick="showService('general')">General Notary</a></li>
+          <li><a href="#services" onclick="showService('ron')">Remote Online (RON)</a></li>
+          <li><a href="#services" onclick="showService('estate')">Estate Planning</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:9186366968">918.636.6968</a></li>
+          <li><a href="mailto:adunn.mobilenotary@gmail.com">adunn.mobilenotary@gmail.com</a></li>
+          <li><a href="#book">Book an Appointment</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#resources">Resources</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Dunn Document Services. All rights reserved.</span>
+      <span>Oklahoma Notary Commission #23008888 &nbsp;|&nbsp; NNA #161636876</span>
+    </div>
+  </div>
+</footer>
+
+<script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Hamburger
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  function closeMobile() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
+  // Service tabs
+  function showService(id) {
+    document.querySelectorAll('.page-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.page-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('svc-' + id).classList.add('active');
+    const tabs = document.querySelectorAll('.page-tab');
+    const map = { loan: 0, general: 1, ron: 2, estate: 3 };
+    tabs[map[id]].classList.add('active');
+    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Resource tabs
+  function showResource(id) {
+    document.querySelectorAll('.resource-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.resource-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('res-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-a.open').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q.open').forEach(q => q.classList.remove('open'));
+    if (!isOpen) {
+      answer.classList.add('open');
+      btn.classList.add('open');
+    }
+  }
+
+  // Contact form
+  function handleForm(e) {
+    e.preventDefault();
+    document.getElementById('form-success').style.display = 'block';
+    e.target.reset();
+  }
+
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
